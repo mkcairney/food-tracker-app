@@ -24,7 +24,7 @@ button {
   border-radius: 999px;
   color: rgb(63, 63, 63);
   margin: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   transition: 0.2s;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.308);

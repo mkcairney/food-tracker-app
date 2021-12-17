@@ -24,10 +24,10 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  gap: 0rem;
-  width: 50vw;
+  gap: 5px;
+  width: 76vw;
   height: fit-content;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   background: rgba(255, 255, 255, 0);
    border-radius: 10px;
 }

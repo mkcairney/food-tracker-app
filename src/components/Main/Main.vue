@@ -15,7 +15,7 @@ export default {
 <style scoped>
 main {
     background: none;
-    padding: 1rem;
+    padding-top: 3rem;
   display: flex;
   flex-direction: column;
   align-content: center;

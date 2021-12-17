@@ -22,7 +22,7 @@ export default {
 <style scoped>
 li {
   list-style: none;
-  background: rgb(233, 233, 233);
+  background: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,14 +30,16 @@ li {
   opacity: 0;
   transform: translateY(50%);
   animation: animatein 0.3s forwards;
-  border-bottom: rgba(0, 0, 0, 0.068) 1px solid;
-  border-left: rgba(0, 0, 0, 0.068) 2px solid;
+  border-left: rgba(0, 255, 21, 0) 4px solid;
+  border-radius: 4px;
   width: 20rem;
+  transition: 0.1s;
 }
 
 li:hover {
   cursor: pointer;
-  border-left: rgb(16, 0, 161) 2px solid;
+  border-left: rgb(0, 102, 161) 4px solid;
+  
 }
 
 @keyframes animatein {

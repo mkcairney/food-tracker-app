@@ -1,7 +1,10 @@
 <template>
   <section>
-    <nutrient />
-    <nutrient />
+      <p>General</p>
+    <div>
+      <nutrient :radius="60" :progress="100" :stroke="10" />
+      <nutrient :radius="60" :progress="38.22" :stroke="10" />
+    </div>
   </section>
 </template>
 
@@ -16,7 +19,7 @@ export default {
 <style scoped>
 section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1rem;
   align-content: center;
   border: solid 2px rgb(63, 63, 63);
@@ -24,16 +27,21 @@ section {
   border-radius: 10px;
   width: 75vw;
   height: 30vh;
-  padding: 0rem 1rem;
+  padding: 0rem 2rem;
   align-self: center;
   text-align: center;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 
 p {
   width: fit-content;
   font-size: 1.3rem;
   background: white;
-  transform: translateY(-180%);
   padding: 0 0rem;
 }
 </style>

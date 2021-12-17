@@ -4,6 +4,7 @@
 
     <div>
       <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'ADD FOOD',icon: 'fas fa-utensils', color: 'red'}"/>
+      <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'CLEAR ALL',icon: 'fas fa-times-circle', color: 'red'}"/>
     </div>
 
     <food-list :diary="diary" @delete-entry="deleteEntry" />
@@ -63,7 +64,7 @@ header {
   align-items: center;
   background: linear-gradient(rgb(68, 230, 47),rgb(0, 197, 82)) ;
   width: 100vw;
-  min-height: 50vh;
+  min-height: 60vh;
   height: fit-content;
   padding: 1rem 0rem;
  border-radius:  0 0 80% 80% / 30%;

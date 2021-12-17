@@ -1,5 +1,5 @@
 <template>
-  <button @click="onAdd()">{{ prop.name }} <i :class="prop.icon"></i></button>
+  <button @click="onAdd()"> <i :class="prop.icon"></i> {{ prop.name }}</button>
 </template>
 
 <script>
@@ -18,18 +18,22 @@ export default {
 
 <style scoped>
 button {
-  background: linear-gradient(rgb(240, 71, 71), rgb(209, 56, 56));
+  background: #fcfcfc;
   padding: 1rem;
   border: none;
   border-radius: 999px;
-  color: rgb(247, 247, 247);
+  color: rgb(63, 63, 63);
   margin: 1rem;
   font-size: 1.2rem;
-  transition: 0.3s;
+  font-weight: 900;
+  transition: 0.2s;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.308);
+  word-spacing: 3px;
+  letter-spacing: 1px;
 }
 
 button:hover {
   cursor: pointer;
-  filter: brightness(120%);
+  background: rgba(255, 255, 255, 0.699);
 }
 </style>

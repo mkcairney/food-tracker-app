@@ -22,11 +22,14 @@ export default {
 <style scoped>
 ul {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 0rem;
   width: 50vw;
-  min-height: 30vh;
   height: fit-content;
+  padding-bottom: 1rem;
+  background: rgba(255, 255, 255, 0);
+   border-radius: 10px;
 }
 
 </style>

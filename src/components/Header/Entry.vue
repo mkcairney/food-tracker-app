@@ -26,12 +26,18 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-left: blue solid 2px;
   padding: 0.5rem;
   opacity: 0;
   transform: translateY(50%);
-  animation: animatein 0.45s forwards;
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.486);
+  animation: animatein 0.3s forwards;
+  border-bottom: rgba(0, 0, 0, 0.068) 1px solid;
+  border-left: rgba(0, 0, 0, 0.068) 2px solid;
+  width: 20rem;
+}
+
+li:hover {
+  cursor: pointer;
+  border-left: rgb(16, 0, 161) 2px solid;
 }
 
 @keyframes animatein {
@@ -42,11 +48,11 @@ li {
 }
 
 input {
-  width: 2.5rem;
+  width: 2rem;
 }
 
 select {
-  width: 4rem;
+  width: 3.5rem;
 }
 
 button {

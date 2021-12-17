@@ -1,25 +1,28 @@
 <template>
-  <Header
-    :diary="diary"
-    @search-modal="toggleModal()"
-    @delete-entry="deleteEntry"
-  />
   <Modal
     v-show="this.modal"
     @close-modal="toggleModal()"
     @add-to-diary="addToDiary"
   />
+  <Header
+    :diary="diary"
+    @search-modal="toggleModal()"
+    @delete-entry="deleteEntry"
+  />
+  <Main />
 </template>
 
 <script>
-import Header from "./components/Header.vue";
+import Header from "./components/Header/Header.vue";
 import Modal from "./components/Modal/Modal.vue";
+import Main from "./components/Main/Main.vue";
 
 export default {
   name: "App",
   components: {
     Header,
     Modal,
+    Main
   },
   methods: {
     toggleModal() {
@@ -54,7 +57,7 @@ export default {
     return {
       diary: [],
       modal: false,
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
     };
   },
   created() {},

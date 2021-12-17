@@ -3,7 +3,7 @@
     <h1>NUTRITION TRACKER</h1>
 
     <div>
-      <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'Add Food',icon: 'fas fa-utensils', color: 'red'}"/>
+      <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'ADD FOOD',icon: 'fas fa-utensils', color: 'red'}"/>
     </div>
 
     <food-list :diary="diary" @delete-entry="deleteEntry" />
@@ -61,9 +61,12 @@ header {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  background: linear-gradient(rgb(255, 217, 0), rgb(255, 176, 5));
+  background: linear-gradient(rgb(68, 230, 47),rgb(0, 197, 82)) ;
   width: 100vw;
+  min-height: 50vh;
+  height: fit-content;
   padding: 1rem 0rem;
+ border-radius:  0 0 80% 80% / 30%;
 }
 h1 {
   font-family: "Righteous";

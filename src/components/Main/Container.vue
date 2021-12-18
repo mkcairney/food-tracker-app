@@ -1,9 +1,8 @@
 <template>
   <section>
-      <p>General</p>
+    <p>General</p>
     <div>
-      <nutrient :radius="60" :progress="100" :stroke="10" />
-      <nutrient :radius="60" :progress="38.22" :stroke="10" />
+      <nutrient v-for="nutrient in nutrition" :key="nutrient.name" :progress="nutrient.amount" :name="nutrient.name"/>
     </div>
   </section>
 </template>
@@ -13,6 +12,8 @@ import Nutrient from "./Nutrient.vue";
 export default {
   name: "container",
   components: { Nutrient },
+  props: ["nutrition"],
+ 
 };
 </script>
 
@@ -20,28 +21,31 @@ export default {
 section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0rem;
   align-content: center;
   border: solid 2px rgb(63, 63, 63);
   color: rgb(63, 63, 63);
   border-radius: 10px;
   width: 75vw;
-  height: 30vh;
+  height: fit-content;
   padding: 0rem 2rem;
+  padding-bottom: 2rem;
   align-self: center;
   text-align: center;
 }
 
 div {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 p {
   width: fit-content;
   font-size: 1.3rem;
-  background: white;
-  padding: 0 0rem;
+  background: rgb(255, 255, 255);
+  transform: translateY(-53%);
+  padding: 0 0.5rem;
 }
 </style>

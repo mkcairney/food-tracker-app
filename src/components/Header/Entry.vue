@@ -27,7 +27,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem;
-  opacity: 0;
+  opacity: 0%;
   transform: translateY(50%);
   animation: animatein 0.3s forwards;
   border-left: rgba(0, 255, 21, 0) 4px solid;
@@ -51,10 +51,13 @@ li:hover {
 
 input {
   width: 2rem;
+  border: solid 1px rgba(128, 128, 128, 0.466);
+  padding: 1px 0;
 }
 
 select {
   width: 3.5rem;
+  border: solid 1px rgba(128, 128, 128, 0.445)
 }
 
 button {

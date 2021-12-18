@@ -1,31 +1,31 @@
 <template>
-  <svg :height="radius * 2" :width="radius * 2">
+  <svg :height="60 * 2 + 10" :width="60 * 2 + 20">
     <circle
       stroke="#c7c7c7"
       :stroke-dasharray="circumference"
       :style="{ strokeDashoffset: 0 }"
-      :stroke-width="stroke"
+      :stroke-width="10"
       fill="transparent"
       :r="normalizedRadius"
-      :cx="radius"
-      :cy="radius"
+      :cx="60"
+      :cy="60"
     />
     <circle
       stroke="#dd4dff"
       :stroke-dasharray="circumference"
       :style="{ strokeDashoffset: strokeDashoffset }"
-      :stroke-width="stroke"
+      :stroke-width="10"
       fill="transparent"
       :r="normalizedRadius"
-      :cx="radius"
-      :cy="radius"
+      :cx="60"
+      :cy="60"
     />
 
     <text
       fill="black"
       font-size="20"
       font-family="Verdana"
-      x="51%"
+      x="46%"
       y="50%"
       dominant-baseline="middle"
       text-anchor="middle"
@@ -34,31 +34,29 @@
     </text>
     <text
       fill="black"
-      font-size="20"
+      font-size="15"
       font-family="Verdana"
-      x="51%"
-      y="100%"
+      x="46%"
+      y="95%"
       dominant-baseline="middle"
       text-anchor="middle"
     >
-      {{ progress }}%
+    {{name}}
     </text>
   </svg>
-  <caption>
-    Calories
-  </caption>
+
 </template>
 
 <script>
 export default {
   name: "nutrient",
   props: {
-    radius: Number,
     progress: Number,
-    stroke: Number,
+    name: String
   },
   data() {
-    const normalizedRadius = this.radius - this.stroke * 2;
+    
+    const normalizedRadius = 60 - 10 * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
     return {
       normalizedRadius,

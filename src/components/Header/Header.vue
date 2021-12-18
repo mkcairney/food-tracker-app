@@ -32,24 +32,24 @@ export default {
     };
   },
   methods: {
-    async getTrivia() {
-      await (
-        await fetch(
-          `https://api.spoonacular.com/food/trivia/random?apiKey=${this.API_KEY}`
-        )
-      )
-        .json()
-        .then((response) => {
-          this.trivia = response.text;
-        });
-    },
+    // async getTrivia() {
+    //   await (
+    //     await fetch(
+    //       `https://api.spoonacular.com/food/trivia/random?apiKey=${this.API_KEY}`
+    //     )
+    //   )
+    //     .json()
+    //     .then((response) => {
+    //       this.trivia = response.text;
+    //     });
+    // },
 
     deleteEntry(item) {
       this.$emit("delete-entry", item);
     },
   },
   created() {
-    this.getTrivia();
+    // this.getTrivia();
   },
 };
 </script>

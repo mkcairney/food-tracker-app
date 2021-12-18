@@ -1,6 +1,6 @@
 <template>
     <main>
-        <container/>
+        <container :nutrition="nutrition"/>
     </main>
 </template>
 
@@ -8,7 +8,8 @@
 import Container from './Container.vue'
 export default {
     name: "main",
-    components: {Container}
+    components: {Container},
+    props: ["nutrition"]
 }
 </script>
 

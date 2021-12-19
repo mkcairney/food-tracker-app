@@ -2,8 +2,23 @@
   <section>
     <p>General</p>
     <div>
-      <nutrient v-for="nutrient in nutrition" :key="nutrient.name" :progress="nutrient.amount" :name="nutrient.name"/>
+      <nutrient v-for="nutrient in nutrition.general" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
     </div>
+    
+  </section>
+  <section>
+    <p>Vitamins</p>
+    <div>
+      <nutrient v-for="nutrient in nutrition.vitamins" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
+    </div>
+    
+  </section>
+  <section>
+    <p>Minerals</p>
+    <div>
+      <nutrient v-for="nutrient in nutrition.minerals" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
+    </div>
+    
   </section>
 </template>
 
@@ -32,6 +47,7 @@ section {
   padding-bottom: 2rem;
   align-self: center;
   text-align: center;
+  margin-bottom: 3rem;
 }
 
 div {
@@ -39,6 +55,7 @@ div {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
+  justify-content: center;
 }
 
 p {

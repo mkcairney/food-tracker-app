@@ -1,24 +1,16 @@
 <template>
   <section>
-    <p>General</p>
+    <p>{{ name }}</p>
     <div>
-      <nutrient v-for="nutrient in nutrition.general" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
+      <nutrient
+        v-for="nutrient in nutrition"
+        :key="nutrient.name"
+        :progress="nutrient.percentOfDailyNeeds"
+        :amount="nutrient.amount"
+        :name="nutrient.name"
+        :unit="nutrient.unit"
+      />
     </div>
-    
-  </section>
-  <section>
-    <p>Vitamins</p>
-    <div>
-      <nutrient v-for="nutrient in nutrition.vitamins" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
-    </div>
-    
-  </section>
-  <section>
-    <p>Minerals</p>
-    <div>
-      <nutrient v-for="nutrient in nutrition.minerals" :key="nutrient.name" :progress="nutrient.percentOfDailyNeeds" :name="nutrient.name"/>
-    </div>
-    
   </section>
 </template>
 
@@ -27,8 +19,7 @@ import Nutrient from "./Nutrient.vue";
 export default {
   name: "container",
   components: { Nutrient },
-  props: ["nutrition"],
- 
+  props: ["nutrition", "name"],
 };
 </script>
 
@@ -43,6 +34,7 @@ section {
   border-radius: 10px;
   width: 75vw;
   height: fit-content;
+  overflow: visible;
   padding: 0rem 2rem;
   padding-bottom: 2rem;
   align-self: center;
@@ -60,7 +52,7 @@ div {
 
 p {
   width: fit-content;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   background: rgb(255, 255, 255);
   transform: translateY(-53%);
   padding: 0 0.5rem;

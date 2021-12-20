@@ -117,7 +117,7 @@ export default {
 
   methods: {
     updateSuggestions(res) {
-      this.suggestions = res.results;
+      this.suggestions = res;
     },
     close() {
       this.$emit("close-modal");

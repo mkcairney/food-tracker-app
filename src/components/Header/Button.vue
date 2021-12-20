@@ -10,7 +10,11 @@ export default {
   },
   methods: {
     onAdd() {
+      if (this.prop.name == "ADD FOOD") {
       this.$emit("search-modal");
+      } else {
+        this.$emit("clear-all")
+      }
     },
   },
 };

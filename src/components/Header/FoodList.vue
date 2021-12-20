@@ -27,7 +27,7 @@ ul {
   gap: 5px;
   width: 76vw;
   height: fit-content;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   background: rgba(255, 255, 255, 0);
    border-radius: 10px;
 }

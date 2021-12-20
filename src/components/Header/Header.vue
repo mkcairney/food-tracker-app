@@ -4,7 +4,7 @@
 
     <div>
       <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'ADD FOOD',icon: 'fas fa-utensils', color: 'red'}"/>
-      <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'CLEAR ALL',icon: 'fas fa-times-circle', color: 'red'}"/>
+      <diary-button @search-modal="$emit('clear-all')" :prop="{name: 'CLEAR ALL',icon: 'fas fa-times-circle', color: 'red'}"/>
     </div>
 
     <food-list :diary="diary" @delete-entry="deleteEntry" />
@@ -23,7 +23,7 @@ import DiaryButton from "./Button.vue";
 export default {
   components: { FoodList, DiaryButton },
   props: ["diary"],
-  emits: ["search-modal", "delete-entry"],
+  emits: ["search-modal", "delete-entry","clear-all"],
   name: "Header",
   data() {
     return {
@@ -63,7 +63,7 @@ header {
   gap: 1rem;
   align-items: center;
   background: linear-gradient(rgb(68, 230, 47),rgb(0, 197, 82)) ;
-  width: 100vw;
+  width: 98.8vw;
   min-height: 60vh;
   height: fit-content;
   padding: 1rem 0rem;

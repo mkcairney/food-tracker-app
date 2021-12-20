@@ -29,44 +29,50 @@
       "dailyNeeds": 50
     },
     {
-      "name": "Saturated Fat",
+      "name": "Fiber",
       "amount": 0,
       "unit": "g",
-      "percentOfDailyNeeds": 0
-    },
-
-    {
-      "name": "Net Carbohydrates",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0
-    },
-    {
-      "name": "Sugar",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0
-    },
-    {
-      "name": "Alcohol",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0
-    },
-    {
-      "name": "Cholesterol",
-      "amount": 0,
-      "unit": "mg",
-      "percentOfDailyNeeds": 0
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 30
     }
+    
   ],
   "vitamins": [
     {
-      "name": "Vitamin C",
+      "name": "Vitamin A",
+      "amount": 0,
+      "unit": "IU",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 3000
+    },
+    {
+      "name": "Vitamin B1",
       "amount": 0,
       "unit": "mg",
       "percentOfDailyNeeds": 0,
-      "dailyNeeds": 90
+      "dailyNeeds": 1.2
+    },
+    {
+      "name": "Vitamin B2",
+      "amount": 0,
+      "unit": "mg",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 1.3
+    },
+    {
+      "name": "Vitamin B3",
+      "amount": 0,
+      "unit": "mg",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 16
+    },
+
+    {
+      "name": "Vitamin B5",
+      "amount": 0,
+      "unit": "mg",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 5
     },
     {
       "name": "Vitamin B6",
@@ -83,46 +89,11 @@
       "dailyNeeds": 2.4
     },
     {
-      "name": "Vitamin B1",
+      "name": "Vitamin C",
       "amount": 0,
       "unit": "mg",
       "percentOfDailyNeeds": 0,
-      "dailyNeeds": 1.2
-    },
-    {
-      "name": "Vitamin B3",
-      "amount": 0,
-      "unit": "mg",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 16
-    },
-    {
-      "name": "Vitamin B5",
-      "amount": 0,
-      "unit": "mg",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 5
-    },
-    {
-      "name": "Vitamin B2",
-      "amount": 0,
-      "unit": "mg",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 1.3
-    },
-    {
-      "name": "Vitamin A",
-      "amount": 0,
-      "unit": "IU",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 3000
-    },
-    {
-      "name": "Vitamin K",
-      "amount": 0,
-      "unit": "Âµg",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 120
+      "dailyNeeds": 90
     },
     {
       "name": "Vitamin E",
@@ -137,17 +108,24 @@
       "unit": "mg",
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 0.015
+    },
+
+    {
+      "name": "Vitamin K",
+      "amount": 0,
+      "unit": "Âµg",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 120
+    },
+    {
+      "name": "Folate",
+      "amount": 0,
+      "unit": "µg",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 400
     }
   ],
   "minerals": [
-    {
-      "name": "Folic Acid",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 0.0004
-    },
-
     {
       "name": "Sodium",
       "amount": 0,
@@ -163,13 +141,7 @@
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 2
     },
-    {
-      "name": "Fiber",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 30
-    },
+    
 
     {
       "name": "Copper",
@@ -179,13 +151,7 @@
       "dailyNeeds": 0.9
     },
 
-    {
-      "name": "Folate",
-      "amount": 0,
-      "unit": "µg",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 400
-    },
+   
     {
       "name": "Potassium",
       "amount": 0,
@@ -245,15 +211,39 @@
       "unit": "mg",
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 4
-    },
+    }
+    
+   
+    
+  ],
+  "other": [
     {
-      "name": "Mono Unsaturated Fat",
+      "name": "Saturated Fat",
       "amount": 0,
-      "unit": "mg",
+      "unit": "g",
+      "percentOfDailyNeeds": 0
+    },
+
+    {
+      "name": "Net Carbohydrates",
+      "amount": 0,
+      "unit": "g",
       "percentOfDailyNeeds": 0
     },
     {
-      "name": "Poly Unsaturated Fat",
+      "name": "Sugar",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0
+    },
+    {
+      "name": "Alcohol",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0
+    },
+    {
+      "name": "Cholesterol",
       "amount": 0,
       "unit": "mg",
       "percentOfDailyNeeds": 0
@@ -270,6 +260,25 @@
       "amount": 0,
       "unit": "mg",
       "percentOfDailyNeeds": 0
+    },
+    {
+      "name": "Mono Unsaturated Fat",
+      "amount": 0,
+      "unit": "mg",
+      "percentOfDailyNeeds": 0
+    },
+    {
+      "name": "Poly Unsaturated Fat",
+      "amount": 0,
+      "unit": "mg",
+      "percentOfDailyNeeds": 0
+    },
+    {
+      "name": "Folic Acid",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 0.0004
     }
   ]
 }

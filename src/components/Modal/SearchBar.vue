@@ -1,5 +1,5 @@
 <template>
-  <input id="searchbar" placeholder="Search" v-model="input" type="text" />
+  <input id="searchbar" placeholder="Search" v-model="input" type="text" autocomplete="off"/>
 </template>
 
 <script>
@@ -8,14 +8,14 @@ export default {
   data() {
     return {
       input: "",
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.VUE_APP_API_KEY
     };
   },
   watch: {
     input: async function getFood() {
       await (
         await fetch(
-          `https://api.spoonacular.com/food/ingredients/search?query=${this.input}&number=5&metaInformation=true&apiKey=${this.API_KEY}`
+          `https://api.spoonacular.com/food/ingredients/autocomplete?query=${this.input}&number=5&metaInformation=true&apiKey=${this.API_KEY}`
         )
       )
         .json()

@@ -2,12 +2,14 @@
   <li>
     {{ item.name }}
     <div>
-      <input type="number" min="0" value="1" />
-      <select name="measure" id="measure">
-        <option :key="unit" value="unit" v-for="unit in item.possibleUnits">
+      <input v-model="quantity" type="number" min="0" />
+      <select name="measure" v-model="units" id="measure">
+        <option :key="unit" :value="unit" v-for="unit in item.possibleUnits">
           {{ unit }}
         </option></select
-      ><button @click="this.$emit('delete-entry', item)"><i class="fas fa-trash-alt"></i></button>
+      ><button @click="this.$emit('delete-entry', item)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
     </div>
   </li>
 </template>
@@ -16,6 +18,38 @@
 export default {
   name: "entry",
   props: ["item"],
+  data() {
+    return {
+      quantity: 1,
+      units: 'g',
+      API_KEY: process.env.VUE_APP_API_KEY,
+    };
+  },
+  watch: {
+   quantity: async function changeQuantity() {
+      await (
+        await fetch(
+          `https://api.spoonacular.com/food/ingredients/${this.item.id}/information?amount=${this.quantity}&unit=${this.units}&apiKey=${this.API_KEY}`
+        )
+      )
+        .json()
+        .then((response) => {
+          this.$emit("entry-change", {...response, myid: this.item.myid})
+        });
+    },
+
+    units: async function changeQuantity() {
+      await (
+        await fetch(
+          `https://api.spoonacular.com/food/ingredients/${this.item.id}/information?amount=${this.quantity}&unit=${this.units}&apiKey=${this.API_KEY}`
+        )
+      )
+        .json()
+        .then((response) => {
+          this.$emit("entry-change", {...response, myid: this.item.myid})
+        });
+    },
+  },
 };
 </script>
 
@@ -28,47 +62,47 @@ li {
   justify-content: space-between;
   padding: 0.5rem;
   opacity: 0%;
-  transform: translateY(50%);
+  /* transform: translateX(10%); */
   animation: animatein 0.3s forwards;
   border-left: rgba(0, 255, 21, 0) 4px solid;
   border-radius: 4px;
   width: 20rem;
-  transition: 0.1s;
+  transition: 0.2s;
 }
 
 li:hover {
   cursor: pointer;
-  border-left: rgb(0, 102, 161) 4px solid;
-  
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.342);
+  transform: translateY(-5%);
 }
 
 @keyframes animatein {
   100% {
     opacity: 100%;
-    transform: translateY(0%);
+    /* transform: translateX(0%); */
   }
 }
 
 input {
-  width: 2rem;
+  width: 2.4rem;
   border: solid 1px rgba(128, 128, 128, 0.466);
   padding: 1px 0;
 }
 
 select {
   width: 3.5rem;
-  border: solid 1px rgba(128, 128, 128, 0.445)
+  border: solid 1px rgba(128, 128, 128, 0.445);
 }
 
 button {
-    background: none;
-    border: none;
-    color: rgb(187, 6, 6);
-    font-size: 1rem;
-    margin: 0 1rem;
+  background: none;
+  border: none;
+  color: rgb(187, 6, 6);
+  font-size: 1rem;
+  margin: 0 1rem;
 }
 i:hover {
-    cursor: pointer;
-    color: rgb(199, 81, 81)
+  cursor: pointer;
+  color: rgb(199, 81, 81);
 }
 </style>

@@ -9,6 +9,7 @@
     @search-modal="toggleModal()"
     @clear-all="clearAll()"
     @delete-entry="deleteEntry"
+    @entry-change="entryChange"
   />
   <Main :nutrition="nutrition" />
 </template>
@@ -37,45 +38,42 @@ export default {
     clearAll() {
       this.diary = [];
     },
-    async addToDiary(item) {
-      await (
-        await fetch(
-          `https://api.spoonacular.com/food/ingredients/${item.id}/information?amount=1&apiKey=${this.API_KEY}`
-        )
-      )
-        .json()
-        .then((response) => {
-          this.diary.push(response);
-          // response.nutrition.nutrients.forEach((nutrient) => {
-          //   let myNutr =
-          //     this.nutrition[
-          //       this.nutrition.findIndex((nutr) => nutr.name == nutrient.name)
-          //     ];
-          //   myNutr.amount += nutrient.amount;
-          //   myNutr.percentOfDailyNeeds +=
-          //     Math.round((myNutr.amount / myNutr.dailyNeeds) * 1000) / 10;
-          // });
-          let respNutr = response.nutrition.nutrients;
-          this.nutrition.general
-            .concat(this.nutrition.vitamins)
-            .concat(this.nutrition.minerals)
-            .concat(this.nutrition.other)
-            .forEach((nutr) => {
-              respNutr.forEach((nutrient) => {
-                if (nutr.name == nutrient.name) {
-                  nutr.amount += nutrient.amount;
-                  nutr.percentOfDailyNeeds +=
-                    Math.round((nutr.amount / nutr.dailyNeeds) * 1000) / 10;
-                }
-              });
-            });
+    entryChange(payload) {
+      this.diary[this.diary.findIndex((entry) => entry.myid == payload.myid)] =
+        payload;
+      this.updateNutrition();
+    },
 
-          this.toggleModal();
-        });
+    addToDiary(item) {
+      this.diary.push({ ...item, myid: Math.round(Math.random() * 10000) });
+      this.toggleModal();
     },
 
     deleteEntry(item) {
-      this.diary = this.diary.filter((entry) => entry.id !== item.id);
+      this.diary = this.diary.filter((entry) => entry.myid !== item.myid);
+      this.updateNutrition();
+    },
+
+    updateNutrition() {
+      let respNutr = this.diary
+        .map((entry) => entry.nutrition.nutrients)
+        .flat();
+      this.nutrition.general
+        .concat(this.nutrition.vitamins)
+        .concat(this.nutrition.minerals)
+        .concat(this.nutrition.other)
+        .forEach((nutr) => {
+          nutr.amount = 0;
+          nutr.percentOfDailyNeeds = 0;
+          respNutr.forEach((nutrient) => {
+            if (nutr.name == nutrient.name) {
+              nutr.amount += nutrient.amount;
+              nutr.percentOfDailyNeeds += Math.round(
+                (nutr.amount / nutr.dailyNeeds) * 100
+              );
+            }
+          });
+        });
     },
   },
   data() {
@@ -85,6 +83,7 @@ export default {
       diary: [],
       modal: false,
       API_KEY,
+      
     };
   },
 };

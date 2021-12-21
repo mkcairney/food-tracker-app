@@ -130,13 +130,17 @@ export default {
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  padding-top: 0.5rem;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
   align-self: center;
   background: rgba(187, 187, 187, 0.548);
   width: 50vw;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+
+
 
 button {
   background: none;
@@ -157,7 +161,7 @@ div {
   align-content: center;
   position: fixed;
   width: 50vw;
-  height: 65vh;
+  height: 62vh;
   background: rgb(255, 255, 255);
   z-index: 1;
   border: solid 2px rgba(0, 0, 0, 0.452);
@@ -168,6 +172,11 @@ div {
   transform: translate(-50%, -50%);
   animation: animatetop 0.4s forwards;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
+}
+@media screen and (max-width: 800px) {
+  div, header {
+    width: 75vw;
+  }
 }
 
 @keyframes animatetop {

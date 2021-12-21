@@ -33,7 +33,7 @@ li {
   justify-content: space-between;
   list-style: none;
   background: rgb(233, 233, 233);
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 5px 0;
   
 }

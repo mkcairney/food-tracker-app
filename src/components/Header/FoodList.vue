@@ -2,9 +2,10 @@
   <ul class="list-container">
     <entry
       v-for="item in diary"
-      :key="item.name"
+      :key="item.id"
       :item="item"
       @delete-entry="$emit('delete-entry', item)"
+      @entry-change="entryChange"
     />
   </ul>
 </template>
@@ -16,6 +17,11 @@ export default {
   props: ["diary"],
   emits: ["delete-entry"],
   components: { Entry },
+  methods: {
+    entryChange(payload) {
+      this.$emit("entry-change", payload);
+    },
+  },
 };
 </script>
 
@@ -23,14 +29,15 @@ export default {
 ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: center;
   gap: 5px;
-  width: 76vw;
+  width: 90vw;
   height: fit-content;
   padding-bottom: 3rem;
   background: rgba(255, 255, 255, 0);
-   border-radius: 10px;
+  border-radius: 10px;
 }
+
 
 </style>
 

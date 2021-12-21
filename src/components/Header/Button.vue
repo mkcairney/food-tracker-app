@@ -10,11 +10,8 @@ export default {
   },
   methods: {
     onAdd() {
-      if (this.prop.name == "ADD FOOD") {
-      this.$emit("search-modal");
-      } else {
-        this.$emit("clear-all")
-      }
+      this.$emit("button-click");
+     
     },
   },
 };
@@ -40,4 +37,6 @@ button:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.699);
 }
+
+ 
 </style>

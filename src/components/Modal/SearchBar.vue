@@ -15,12 +15,13 @@ export default {
     input: async function getFood() {
       await (
         await fetch(
-          `https://api.spoonacular.com/food/ingredients/autocomplete?query=${this.input}&number=5&metaInformation=true&apiKey=${this.API_KEY}`
+          `https://api.spoonacular.com/food/ingredients/autocomplete?query=${this.input}&number=7&metaInformation=true&apiKey=${this.API_KEY}`
         )
       )
         .json()
         .then((response) =>  {
           this.$emit("suggest", response)
+          console.log(response)
           });
         
     },

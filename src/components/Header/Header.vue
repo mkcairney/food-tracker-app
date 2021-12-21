@@ -3,16 +3,21 @@
     <h1>NUTRITION TRACKER</h1>
 
     <div>
-      <diary-button @search-modal="$emit('search-modal')" :prop="{name: 'ADD FOOD',icon: 'fas fa-utensils', color: 'red'}"/>
-      <diary-button @search-modal="$emit('clear-all')" :prop="{name: 'CLEAR ALL',icon: 'fas fa-times-circle', color: 'red'}"/>
+      <diary-button
+        @button-click="$emit('search-modal')"
+        :prop="{ name: 'ADD FOOD', icon: 'fas fa-utensils', color: 'red' }"
+      />
+      <diary-button
+        @button-click="$emit('clear-all')"
+        :prop="{ name: 'CLEAR ALL', icon: 'fas fa-times-circle', color: 'red' }"
+      />
     </div>
 
-    <food-list :diary="diary" @delete-entry="deleteEntry" />
-    <!-- <h3 :trivia="trivia">
-      Did you know: <br />
-      <br />
-      {{ trivia }}
-    </h3> -->
+    <food-list
+      :diary="diary"
+      @delete-entry="deleteEntry"
+      @entry-change="entryChange"
+    />
   </header>
 </template>
 
@@ -23,26 +28,18 @@ import DiaryButton from "./Button.vue";
 export default {
   components: { FoodList, DiaryButton },
   props: ["diary"],
-  emits: ["search-modal", "delete-entry","clear-all"],
+  emits: ["search-modal", "delete-entry", "clear-all"],
   name: "Header",
   data() {
     return {
       trivia: "",
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
     };
   },
   methods: {
-    // async getTrivia() {
-    //   await (
-    //     await fetch(
-    //       `https://api.spoonacular.com/food/trivia/random?apiKey=${this.API_KEY}`
-    //     )
-    //   )
-    //     .json()
-    //     .then((response) => {
-    //       this.trivia = response.text;
-    //     });
-    // },
+    entryChange(payload) {
+      this.$emit("entry-change", payload);
+    },
 
     deleteEntry(item) {
       this.$emit("delete-entry", item);
@@ -62,13 +59,19 @@ header {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  background: linear-gradient(rgb(68, 230, 47),rgb(0, 197, 82)) ;
+  background: linear-gradient(rgb(68, 230, 47), rgb(0, 197, 82));
   width: 98.8vw;
   min-height: 60vh;
   height: fit-content;
   padding: 1rem 0rem;
- border-radius:  0 0 80% 80% / 30%;
+  border-radius: 0 0 80% 80% / 30%;
 }
+@media screen and (max-width: 480px) {
+  header {
+    border-radius: 0 0 80% 80% / 20%;
+  }
+}
+
 h1 {
   font-family: "Righteous";
   text-align: center;
@@ -80,5 +83,11 @@ h3 {
   font-weight: 100;
   text-align: center;
   width: 50vw;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <li @focus="showAmount" @blur="showAmount" tabindex="0">
+  <li @click="showFooter" @blur="showAmount" tabindex="0">
     {{ item.name }}
     <div>
       <button @click="addToDiary(item)">
@@ -22,6 +22,10 @@ export default {
     addToDiary(item) {
       this.$emit("add-to-diary", item);
     },
+    showFooter(item) {
+
+      this.$emit("show-footer", item);
+    },
   },
 };
 </script>
@@ -33,7 +37,7 @@ li {
   justify-content: space-between;
   list-style: none;
   background: rgb(233, 233, 233);
-  padding: 0.5rem;
+  padding: 0.3rem;
   margin: 5px 0;
   
 }

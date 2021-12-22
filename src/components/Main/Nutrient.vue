@@ -1,11 +1,6 @@
 <template>
-  <svg
-   
-    :height="radius * 2"
-    :width="radius * 2"
-  >
+  <svg :height="radius * 2" :width="radius * 2">
     <circle
-    
       stroke="#c7c7c7"
       :stroke-dasharray="circumference"
       :style="{ strokeDashoffset: 0 }"
@@ -16,7 +11,7 @@
       :cy="radius"
     />
     <circle
-      stroke="#dd4dff"
+      :stroke="progressColor"
       :stroke-dasharray="circumference"
       :style="{ strokeDashoffset: strokeDashoffset }"
       :stroke-width="10"
@@ -27,8 +22,7 @@
     />
 
     <text
-     @mouseenter="changeStat()"
-    
+      @mouseenter="changeStat()"
       v-if="percent"
       fill="black"
       font-size="20"
@@ -41,7 +35,7 @@
       {{ progress }}%
     </text>
     <text
-    @mouseleave="changeStat()"
+      @mouseleave="changeStat()"
       v-else
       fill="black"
       font-size="20"
@@ -51,7 +45,7 @@
       dominant-baseline="middle"
       text-anchor="middle"
     >
-      {{ amount }}{{unit}}
+      {{ amount }}{{ unit }}
     </text>
     <text
       fill="black"
@@ -75,7 +69,7 @@ export default {
     progress: Number,
     name: String,
     amount: Number,
-    unit: String
+    unit: String,
   },
   data() {
     const radius = 70;
@@ -100,10 +94,19 @@ export default {
 
   computed: {
     strokeDashoffset() {
-      return (
-        this.circumference - ((this.progress + 0) / 100) * this.circumference
-      );
+      if (this.progress >= 100) {
+        return 0;
+      } else {
+        return this.circumference - (this.progress / 100) * this.circumference;
+      }
     },
+    progressColor() {
+      if (this.progress < 100) {
+        return "#ecdd04"
+      } else {
+        return "#00c700"
+      }
+    }
   },
 };
 </script>
@@ -115,6 +118,6 @@ circle {
   transform-origin: 50% 50%;
 }
 svg:hover {
-  cursor: default
+  cursor: default;
 }
 </style>

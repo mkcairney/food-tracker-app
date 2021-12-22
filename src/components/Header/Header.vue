@@ -3,11 +3,11 @@
     <h1>NUTRITION TRACKER</h1>
 
     <div>
-      <diary-button
+      <my-button
         @button-click="$emit('search-modal')"
         :prop="{ name: 'ADD FOOD', icon: 'fas fa-utensils', color: 'red' }"
       />
-      <diary-button
+      <my-button
         @button-click="$emit('clear-all')"
         :prop="{ name: 'CLEAR ALL', icon: 'fas fa-times-circle', color: 'red' }"
       />
@@ -23,10 +23,10 @@
 
 <script>
 import FoodList from "./FoodList.vue";
-import DiaryButton from "./Button.vue";
+import MyButton from "./Button.vue";
 
 export default {
-  components: { FoodList, DiaryButton },
+  components: { FoodList, MyButton },
   props: ["diary"],
   emits: ["search-modal", "delete-entry", "clear-all"],
   name: "Header",

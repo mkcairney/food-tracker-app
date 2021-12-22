@@ -4,7 +4,7 @@
       "name": "Calories",
       "amount": 0,
       "unit": "cal",
-      "percentOfDailyNeeds": 0,
+      "percentOfDailyNeeds": 99,
       "dailyNeeds": 2000
     },
     {

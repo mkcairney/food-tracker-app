@@ -6,18 +6,21 @@
     </header>
     <ul>
       <item
-         v-for="item in suggestions"
-      :key="item.name"
-      :item="item"
+        v-for="item in suggestions"
+        :key="item.name"
+        :item="item"
         @add-to-diary="$emit('add-to-diary', item)"
+        @show-footer="showFooter(item)"
       />
     </ul>
+    <additem v-show="show" :itemSelect="itemSelect"/>
   </div>
 </template>
 
 <script>
 import searchbar from "./SearchBar.vue";
 import item from "./Item.vue";
+import additem from "./AddItem.vue";
 export default {
   name: "modal",
 
@@ -26,17 +29,20 @@ export default {
   components: {
     searchbar,
     item,
+    additem,
   },
 
   data() {
     return {
+      show: false,
+      itemSelect: "",
       suggestions: [
-    {
-        "name": "apple",
-        "image": "apple.jpg",
-        "id": 9003,
-        "aisle": "Produce",
-        "possibleUnits": [
+        {
+          name: "apple",
+          image: "apple.jpg",
+          id: 9003,
+          aisle: "Produce",
+          possibleUnits: [
             "small",
             "large",
             "piece",
@@ -47,28 +53,22 @@ export default {
             "oz",
             "cup slice",
             "cup",
-            "serving"
-        ]
-    },
-    {
-        "name": "applesauce",
-        "image": "applesauce.png",
-        "id": 9019,
-        "aisle": "Canned and Jarred",
-        "possibleUnits": [
-            "g",
-            "oz",
-            "cup",
             "serving",
-            "tablespoon"
-        ]
-    },
-    {
-        "name": "apple juice",
-        "image": "apple-juice.jpg",
-        "id": 9016,
-        "aisle": "Beverages",
-        "possibleUnits": [
+          ],
+        },
+        {
+          name: "applesauce",
+          image: "applesauce.png",
+          id: 9019,
+          aisle: "Canned and Jarred",
+          possibleUnits: ["g", "oz", "cup", "serving", "tablespoon"],
+        },
+        {
+          name: "apple juice",
+          image: "apple-juice.jpg",
+          id: 9016,
+          aisle: "Beverages",
+          possibleUnits: [
             "g",
             "drink box",
             "fl oz",
@@ -76,15 +76,15 @@ export default {
             "teaspoon",
             "cup",
             "serving",
-            "tablespoon"
-        ]
-    },
-    {
-        "name": "apple cider",
-        "image": "apple-cider.jpg",
-        "id": 1009016,
-        "aisle": "Beverages",
-        "possibleUnits": [
+            "tablespoon",
+          ],
+        },
+        {
+          name: "apple cider",
+          image: "apple-cider.jpg",
+          id: 1009016,
+          aisle: "Beverages",
+          possibleUnits: [
             "g",
             "drink box",
             "fl oz",
@@ -93,25 +93,25 @@ export default {
             "bottle NFS",
             "cup",
             "serving",
-            "tablespoon"
-        ]
-    },
-    {
-        "name": "apple jelly",
-        "image": "apple-jelly.jpg",
-        "id": 10019297,
-        "aisle": "Nut butters, Jams, and Honey",
-        "possibleUnits": [
+            "tablespoon",
+          ],
+        },
+        {
+          name: "apple jelly",
+          image: "apple-jelly.jpg",
+          id: 10019297,
+          aisle: "Nut butters, Jams, and Honey",
+          possibleUnits: [
             "g",
             "oz",
             "packet",
             "teaspoon",
             "cup",
             "serving",
-            "tablespoon"
-        ]
-    }
-],
+            "tablespoon",
+          ],
+        },
+      ],
     };
   },
 
@@ -121,6 +121,10 @@ export default {
     },
     close() {
       this.$emit("close-modal");
+    },
+    showFooter(item) {
+      this.itemSelect = item
+      this.show = true;
     },
   },
 };
@@ -140,7 +144,10 @@ header {
   border-top-right-radius: 8px;
 }
 
-
+ul {
+  overflow-y: scroll;
+  height: 40vh;
+}
 
 button {
   background: none;
@@ -161,7 +168,7 @@ div {
   align-content: center;
   position: fixed;
   width: 50vw;
-  height: 62vh;
+  height: fit-content;
   background: rgb(255, 255, 255);
   z-index: 1;
   border: solid 2px rgba(0, 0, 0, 0.452);
@@ -174,7 +181,8 @@ div {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
 }
 @media screen and (max-width: 800px) {
-  div, header {
+  div,
+  header {
     width: 75vw;
   }
 }

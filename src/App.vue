@@ -37,6 +37,7 @@ export default {
     },
     clearAll() {
       this.diary = [];
+       this.updateNutrition();
     },
     entryChange(payload) {
       this.diary[this.diary.findIndex((entry) => entry.myid == payload.myid)] =
@@ -47,6 +48,7 @@ export default {
     addToDiary(item) {
       this.diary.push({ ...item, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
+      this.updateNutrition();
     },
 
     deleteEntry(item) {
@@ -76,6 +78,7 @@ export default {
         });
     },
   },
+
   data() {
     const API_KEY = process.env.VUE_APP_API_KEY;
     return {

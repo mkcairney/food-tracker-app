@@ -45,8 +45,8 @@ export default {
       this.updateNutrition();
     },
 
-    addToDiary(item) {
-      this.diary.push({ ...item, myid: Math.round(Math.random() * 10000) });
+    addToDiary(res) {
+      this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
       this.updateNutrition();
     },

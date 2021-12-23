@@ -2,7 +2,7 @@
   <li>
     {{ item.name }}
     <div>
-      <input v-model="quantity" type="number" min="0" />
+      <input v-model="quantity"  type="number" min="0" />
       <select name="measure" v-model="units" id="measure">
         <option :key="unit" :value="unit" v-for="unit in item.possibleUnits">
           {{ unit }}
@@ -20,8 +20,8 @@ export default {
   props: ["item"],
   data() {
     return {
-      quantity: 1,
-      units: 'g',
+      quantity: this.item.amount,
+      units: this.item.unit,
       API_KEY: process.env.VUE_APP_API_KEY,
     };
   },
@@ -62,11 +62,10 @@ li {
   justify-content: space-between;
   padding: 0.5rem;
   opacity: 0%;
-  /* transform: translateX(10%); */
   animation: animatein 0.3s forwards;
   border-left: rgba(0, 255, 21, 0) 4px solid;
   border-radius: 4px;
-  width: 20rem;
+  width: fit-content;
   transition: 0.2s;
 }
 
@@ -87,6 +86,7 @@ input {
   width: 2.4rem;
   border: solid 1px rgba(128, 128, 128, 0.466);
   padding: 1px 0;
+  margin-left: 1rem;
 }
 
 select {

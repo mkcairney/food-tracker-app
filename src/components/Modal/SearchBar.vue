@@ -21,7 +21,6 @@ export default {
         .json()
         .then((response) =>  {
           this.$emit("suggest", response)
-          console.log(response)
           });
         
     },

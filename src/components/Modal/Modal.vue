@@ -9,11 +9,14 @@
         v-for="item in suggestions"
         :key="item.name"
         :item="item"
-        @add-to-diary="$emit('add-to-diary', item)"
         @show-footer="showFooter(item)"
       />
     </ul>
-    <additem v-show="show" :itemSelect="itemSelect"/>
+    <additem
+      v-show="show"
+      :itemSelect="itemSelect"
+      @add-to-diary="addToDiary"
+    />
   </div>
 </template>
 
@@ -116,14 +119,18 @@ export default {
   },
 
   methods: {
+    addToDiary(res) {
+      this.$emit("add-to-diary", res);
+    },
     updateSuggestions(res) {
       this.suggestions = res;
     },
     close() {
       this.$emit("close-modal");
+      this.show = false;
     },
     showFooter(item) {
-      this.itemSelect = item
+      this.itemSelect = item;
       this.show = true;
     },
   },

@@ -1,16 +1,19 @@
 <template>
   <div>
     <header>
-      <searchbar @suggest="updateSuggestions" />
+      <searchbar @suggest="updateSuggestions" :reset="reset"/>
       <button @click="close()"><i class="fas fa-times"></i></button>
     </header>
     <ul>
-      <item
+      <li
         v-for="item in suggestions"
         :key="item.name"
         :item="item"
-        @show-footer="showFooter(item)"
-      />
+        @click="showFooter(item)"
+        tabindex="0"
+      >
+        {{ item.name }}
+      </li>
     </ul>
     <additem
       v-show="show"
@@ -22,7 +25,6 @@
 
 <script>
 import searchbar from "./SearchBar.vue";
-import item from "./Item.vue";
 import additem from "./AddItem.vue";
 export default {
   name: "modal",
@@ -31,12 +33,12 @@ export default {
 
   components: {
     searchbar,
-    item,
     additem,
   },
 
   data() {
     return {
+      reset: false,
       show: false,
       itemSelect: "",
       suggestions: [
@@ -59,61 +61,6 @@ export default {
             "serving",
           ],
         },
-        {
-          name: "applesauce",
-          image: "applesauce.png",
-          id: 9019,
-          aisle: "Canned and Jarred",
-          possibleUnits: ["g", "oz", "cup", "serving", "tablespoon"],
-        },
-        {
-          name: "apple juice",
-          image: "apple-juice.jpg",
-          id: 9016,
-          aisle: "Beverages",
-          possibleUnits: [
-            "g",
-            "drink box",
-            "fl oz",
-            "oz",
-            "teaspoon",
-            "cup",
-            "serving",
-            "tablespoon",
-          ],
-        },
-        {
-          name: "apple cider",
-          image: "apple-cider.jpg",
-          id: 1009016,
-          aisle: "Beverages",
-          possibleUnits: [
-            "g",
-            "drink box",
-            "fl oz",
-            "oz",
-            "teaspoon",
-            "bottle NFS",
-            "cup",
-            "serving",
-            "tablespoon",
-          ],
-        },
-        {
-          name: "apple jelly",
-          image: "apple-jelly.jpg",
-          id: 10019297,
-          aisle: "Nut butters, Jams, and Honey",
-          possibleUnits: [
-            "g",
-            "oz",
-            "packet",
-            "teaspoon",
-            "cup",
-            "serving",
-            "tablespoon",
-          ],
-        },
       ],
     };
   },
@@ -121,6 +68,7 @@ export default {
   methods: {
     addToDiary(res) {
       this.$emit("add-to-diary", res);
+      this.show = false;
     },
     updateSuggestions(res) {
       this.suggestions = res;
@@ -128,6 +76,7 @@ export default {
     close() {
       this.$emit("close-modal");
       this.show = false;
+      this.reset = true
     },
     showFooter(item) {
       this.itemSelect = item;
@@ -142,18 +91,22 @@ header {
   display: flex;
   flex-direction: row;
   padding-top: 0.5rem;
+  
   justify-content: space-around;
   flex-wrap: wrap-reverse;
   align-self: center;
-  background: rgba(187, 187, 187, 0.548);
+  background: rgba(255, 255, 255, 0.548);
   width: 50vw;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.178);
+
 }
 
 ul {
   overflow-y: scroll;
   height: 40vh;
+  margin-top: 0.5rem;
 }
 
 button {
@@ -178,14 +131,14 @@ div {
   height: fit-content;
   background: rgb(255, 255, 255);
   z-index: 1;
-  border: solid 2px rgba(0, 0, 0, 0.452);
+  border: solid 2px rgba(0, 0, 0, 0.212);
   border-radius: 10px;
   top: 5%;
   left: 50%;
   opacity: 0;
   transform: translate(-50%, -50%);
   animation: animatetop 0.4s forwards;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.158);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.24);
 }
 @media screen and (max-width: 800px) {
   div,
@@ -199,5 +152,22 @@ div {
     opacity: 100%;
     top: 40%;
   }
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  background: rgb(233, 233, 233);
+  padding: 0.3rem;
+  margin: 5px 0;
+}
+li:focus {
+  outline: solid 2px rgb(168, 168, 168);
+  background: rgb(212, 212, 212);
+}
+li:hover {
+  cursor: pointer;
 }
 </style>

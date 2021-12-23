@@ -5,6 +5,7 @@
 <script>
 export default {
   name: "search-bar",
+  props: ["reset"],
   data() {
     return {
       input: "",
@@ -24,8 +25,16 @@ export default {
           });
         
     },
+    
   },
-  methods: {},
+  methods: {
+
+  resetHandler() {
+      if (this.reset) {
+        this.input = ""
+      }
+  }
+  },
 };
 </script>
 

@@ -1,9 +1,11 @@
 <template>
   <section>
-    {{ itemSelect.name }}
+    <p>
+      {{ itemSelect.name }}
+    </p>
     <div>
-      <input v-model="quant" type="number" min="0"  />
-      <select v-model="units" name="unitselect" id="unit" >
+      <input v-model="quant" type="number" min="0" />
+      <select v-model="units" name="unitselect" id="unit">
         <option
           v-for="unit in itemSelect.possibleUnits"
           :key="unit"
@@ -38,6 +40,8 @@ export default {
         .json()
         .then((response) => {
           this.$emit("add-to-diary", response);
+          this.quant = 1;
+          this.units = "g";
         });
     },
   },
@@ -48,9 +52,12 @@ export default {
 section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 1.5rem 0;
+  justify-content: space-evenly;
+  padding: 1rem 0;
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.178);
+}
+p {
+  align-self: center;
 }
 div {
   display: flex;

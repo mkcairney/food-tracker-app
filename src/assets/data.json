@@ -84,7 +84,7 @@
     {
       "name": "Vitamin B12",
       "amount": 0,
-      "unit": "mg",
+      "unit": "µg",
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 2.4
     },
@@ -105,15 +105,15 @@
     {
       "name": "Vitamin D",
       "amount": 0,
-      "unit": "mg",
+      "unit": "µg",
       "percentOfDailyNeeds": 0,
-      "dailyNeeds": 0.015
+      "dailyNeeds": 15
     },
 
     {
       "name": "Vitamin K",
       "amount": 0,
-      "unit": "Âµg",
+      "unit": "µg",
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 120
     },
@@ -200,7 +200,7 @@
     {
       "name": "Selenium",
       "amount": 0,
-      "unit": "Âµg",
+      "unit": "µg",
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 55
     },

@@ -99,7 +99,7 @@ header {
   width: 50vw;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.178);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
 
 }
 
@@ -138,7 +138,7 @@ div {
   opacity: 0;
   transform: translate(-50%, -50%);
   animation: animatetop 0.4s forwards;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 10px 100vh rgba(0, 0, 0, 0.37);
 }
 @media screen and (max-width: 800px) {
   div,
@@ -164,8 +164,8 @@ li {
   margin: 5px 0;
 }
 li:focus {
-  outline: solid 2px rgb(168, 168, 168);
-  background: rgb(212, 212, 212);
+  background: rgba(20, 202, 3, 0.877);
+  color: white;
 }
 li:hover {
   cursor: pointer;

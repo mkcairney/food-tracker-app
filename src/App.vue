@@ -49,6 +49,7 @@ export default {
       this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
       this.updateNutrition();
+      console.log(this.diary)
     },
 
     deleteEntry(item) {

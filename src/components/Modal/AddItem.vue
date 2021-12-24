@@ -54,7 +54,8 @@ section {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 1rem 0;
-  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.178);
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.116);
+  z-index: 555;
 }
 p {
   align-self: center;

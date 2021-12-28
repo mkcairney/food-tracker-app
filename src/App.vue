@@ -27,7 +27,9 @@ export default {
     Modal,
     Main,
   },
+
   methods: {
+    // method for opening and closing the food search modal
     toggleModal() {
       if (this.modal == true) {
         this.modal = false;
@@ -35,28 +37,35 @@ export default {
         this.modal = true;
       }
     },
+
+    // method for clearing all food entries at once
     clearAll() {
       this.diary = [];
-       this.updateNutrition();
+      this.updateNutrition();
     },
+
+    // method for updating a food entry measurement, where payload has been bubbled up from a nested compenent using emits
     entryChange(payload) {
       this.diary[this.diary.findIndex((entry) => entry.myid == payload.myid)] =
         payload;
       this.updateNutrition();
     },
 
+    // method for setting a food entry and adding a unqiue id in order to edit or delete successfully
     addToDiary(res) {
       this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
       this.updateNutrition();
-      console.log(this.diary)
+      console.log(this.diary);
     },
 
+    //  method for removing a food entry
     deleteEntry(item) {
       this.diary = this.diary.filter((entry) => entry.myid !== item.myid);
       this.updateNutrition();
     },
 
+    // method for calculating the nutirents in all the food entries combined
     updateNutrition() {
       let respNutr = this.diary
         .map((entry) => entry.nutrition.nutrients)
@@ -87,7 +96,6 @@ export default {
       diary: [],
       modal: false,
       API_KEY,
-      
     };
   },
 };

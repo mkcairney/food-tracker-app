@@ -3,7 +3,7 @@
         <container  :nutrition="nutrition.general" name="General"/>
         <container  :nutrition="nutrition.vitamins" name="Vitamins"/>
         <container  :nutrition="nutrition.minerals" name="Minerals"/>
-        <container  :nutrition="nutrition.other" name="Other"/>
+        <!-- <container  :nutrition="nutrition.other" name="Other"/> -->
     </main>
 </template>
 

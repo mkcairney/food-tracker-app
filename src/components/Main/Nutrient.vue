@@ -45,7 +45,7 @@
       dominant-baseline="middle"
       text-anchor="middle"
     >
-      {{ amount }}{{ unit }}
+      {{ Math.round(amount*100)/100 }}{{ unit }}
     </text>
     <text
       fill="black"
@@ -70,6 +70,7 @@ export default {
     name: String,
     amount: Number,
     unit: String,
+    threshold: Number
   },
   data() {
     const radius = 70;
@@ -103,6 +104,8 @@ export default {
     progressColor() {
       if (this.progress < 100) {
         return "#ecdd04"
+      } else if (this.amount > this.threshold) {
+        return "#ff0000"
       } else {
         return "#00c700"
       }

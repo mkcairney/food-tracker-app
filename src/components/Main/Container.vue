@@ -9,6 +9,7 @@
         :amount="nutrient.amount"
         :name="nutrient.name"
         :unit="nutrient.unit"
+        :threshold="nutrient.threshold"
       />
     </div>
   </section>

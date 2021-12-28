@@ -32,7 +32,6 @@ export default {
   name: "Header",
   data() {
     return {
-      trivia: "",
       API_KEY: process.env.API_KEY,
     };
   },
@@ -45,9 +44,7 @@ export default {
       this.$emit("delete-entry", item);
     },
   },
-  created() {
-    // this.getTrivia();
-  },
+  
 };
 </script>
 

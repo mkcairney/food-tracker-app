@@ -42,7 +42,7 @@ console.log(this.show)
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 #searchbar {
   border: solid rgb(56, 56, 56) 2px;
   border-radius: 999px;

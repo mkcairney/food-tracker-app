@@ -114,7 +114,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 circle {
   transition: stroke-dashoffset 0.35s;
   transform: rotate(-90deg);

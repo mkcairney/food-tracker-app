@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 button {
   background: #fcfcfc;
   padding: 1rem;

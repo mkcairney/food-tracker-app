@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <searchbar @suggest="updateSuggestions" :reset="reset"/>
+      <searchbar @suggest="updateSuggestions" :show="show" />
       <button @click="close()"><i class="fas fa-times"></i></button>
     </header>
     <ul>
@@ -38,30 +38,9 @@ export default {
 
   data() {
     return {
-      reset: false,
       show: false,
       itemSelect: "",
-      suggestions: [
-        {
-          name: "apple",
-          image: "apple.jpg",
-          id: 9003,
-          aisle: "Produce",
-          possibleUnits: [
-            "small",
-            "large",
-            "piece",
-            "slice",
-            "g",
-            "extra small",
-            "medium",
-            "oz",
-            "cup slice",
-            "cup",
-            "serving",
-          ],
-        },
-      ],
+      suggestions: [],
     };
   },
 
@@ -76,7 +55,6 @@ export default {
     close() {
       this.$emit("close-modal");
       this.show = false;
-      this.reset = true
     },
     showFooter(item) {
       this.itemSelect = item;
@@ -86,12 +64,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
   display: flex;
   flex-direction: row;
   padding-top: 0.5rem;
-  
+
   justify-content: space-around;
   flex-wrap: wrap-reverse;
   align-self: center;
@@ -99,8 +77,7 @@ header {
   width: 50vw;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
-
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.178);
 }
 
 ul {
@@ -138,7 +115,7 @@ div {
   opacity: 0;
   transform: translate(-50%, -50%);
   animation: animatetop 0.4s forwards;
-  box-shadow: 0px 0px 10px 100vh rgba(0, 0, 0, 0.37);
+  box-shadow: 0px 0px 10px 100vh rgba(0, 0, 0, 0.26);
 }
 @media screen and (max-width: 800px) {
   div,

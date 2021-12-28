@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 li {
   list-style: none;
   background: rgb(255, 255, 255);

@@ -1,15 +1,21 @@
 <template>
-  <input id="searchbar" placeholder="Search" v-model="input" type="text" autocomplete="off"/>
+  <input
+    id="searchbar"
+    placeholder="Search"
+    v-model="input"
+    type="text"
+    autocomplete="off"
+  />
 </template>
 
 <script>
 export default {
   name: "search-bar",
-  props: ["reset"],
+  props: ["show"],
   data() {
     return {
       input: "",
-      API_KEY: process.env.VUE_APP_API_KEY
+      API_KEY: process.env.VUE_APP_API_KEY,
     };
   },
   watch: {
@@ -20,25 +26,23 @@ export default {
         )
       )
         .json()
-        .then((response) =>  {
-          this.$emit("suggest", response)
-          });
-        
+        .then((response) => {
+          this.$emit("suggest", response);
+        });
     },
-    
+    show: function () {
+console.log(this.show)
+    }
   },
   methods: {
-
-  resetHandler() {
-      if (this.reset) {
-        this.input = ""
-      }
-  }
+    resetHandler() {
+      console.log(this.show);
+    },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #searchbar {
   border: solid rgb(56, 56, 56) 2px;
   border-radius: 999px;

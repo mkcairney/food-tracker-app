@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 section {
   display: flex;
   flex-wrap: wrap;
@@ -59,6 +59,7 @@ section {
 }
 p {
   align-self: center;
+  font-size: 1.2rem;
 }
 div {
   display: flex;

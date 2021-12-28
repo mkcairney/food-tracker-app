@@ -101,9 +101,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import "./assets/css/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans&display=swap");
+
 * {
   margin: 0;
   padding: 0;

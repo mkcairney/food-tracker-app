@@ -77,7 +77,7 @@ li:hover {
 
 @keyframes animatein {
   100% {
-    opacity: 100%;
+    opacity: 1;
     /* transform: translateX(0%); */
   }
 }

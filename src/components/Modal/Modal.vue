@@ -101,7 +101,7 @@ i:hover {
 
 @keyframes animatetop {
   100% {
-    opacity: 99%;
+    opacity: 1;
     top: 40%;
   }
 }

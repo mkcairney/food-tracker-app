@@ -99,6 +99,12 @@ i:hover {
   color: rgb(255, 96, 96);
 }
 
+@keyframes animatetop {
+  100% {
+    opacity: 100%;
+    top: 40%;
+  }
+}
 div {
   display: flex;
   flex-direction: column;
@@ -121,13 +127,6 @@ div {
   div,
   header {
     width: 75vw;
-  }
-}
-
-@keyframes animatetop {
-  100% {
-    opacity: 100%;
-    top: 40%;
   }
 }
 

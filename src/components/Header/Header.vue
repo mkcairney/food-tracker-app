@@ -1,6 +1,26 @@
 <template>
-  <header>
-    <h1>NUTRITION TRACKER</h1>
+  <section>
+    <header>
+      <img
+        src="https://spoonacular.com/images/spoonacular-logo-b.svg"
+        class="logo"
+        alt="Spoonacular Logo"
+        onclick="window.open('https://spoonacular.com/food-api')"
+      />
+      <h1>NUTRITION TRACKER</h1>
+      <i class="fas fa-info-circle" tabindex="0"></i>
+      <p>
+        The recommended nutrient levels in this app are compared with the RDA
+        (Recommended Dietary Allowance), Adequate Intake (AI) and Tolerable
+        Upper Intake Level (UL) for the average healthy adult (excluding
+        pregnant women). Full information can be found
+        <a
+          href="https://ods.od.nih.gov/HealthInformation/Dietary_Reference_Intakes.aspx"
+        >
+          here</a
+        >.
+      </p>
+    </header>
 
     <div>
       <my-button
@@ -18,7 +38,7 @@
       @delete-entry="deleteEntry"
       @entry-change="entryChange"
     />
-  </header>
+  </section>
 </template>
 
 <script>
@@ -44,14 +64,13 @@ export default {
       this.$emit("delete-entry", item);
     },
   },
-  
 };
 </script>
 
-<style  scoped>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Ubuntu:wght@300&display=swap");
 
-header {
+section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -64,9 +83,14 @@ header {
   border-radius: 0 0 80% 80% / 30%;
 }
 @media screen and (max-width: 480px) {
-  header {
+  section {
     border-radius: 0 0 80% 80% / 20%;
   }
+}
+
+img {
+  width: 3.5rem;
+  justify-self: baseline;
 }
 
 h1 {
@@ -74,17 +98,53 @@ h1 {
   text-align: center;
   color: rgba(58, 58, 58, 0.712);
   letter-spacing: 2px;
+  align-self: center;
+  font-size: 2rem;
 }
-h3 {
-  font-size: 0.7rem;
-  font-weight: 100;
+
+i {
+  color: rgb(255, 255, 255);
+  align-self: center;
+  font-size: 1.3rem;
+}
+i:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+i:focus + p {
+  opacity: 1;
+}
+
+p {
+  z-index: 50;
+  background: white;
+  border-radius: 10px;
+  position: fixed;
+  top: 30%;
+  padding: 3rem;
+  opacity: 0;
+  transition: 0.7s;
+  box-shadow: 0px 0px 20px 100vh rgba(0, 0, 0, 0.274);
   text-align: center;
   width: 50vw;
 }
 
 div {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 90vw;
+}
+
 </style>

@@ -10,12 +10,13 @@
       <h1>NUTRITION TRACKER</h1>
       <i class="fas fa-info-circle" tabindex="0"></i>
       <p>
-        The recommended nutrient levels in this app are compared with the RDA
+        The recommended nutrient levels given here are based on the RDA
         (Recommended Dietary Allowance), Adequate Intake (AI) and Tolerable
         Upper Intake Level (UL) for the average healthy adult (excluding
         pregnant women). Full information can be found
         <a
           href="https://ods.od.nih.gov/HealthInformation/Dietary_Reference_Intakes.aspx"
+          target="_blank"
         >
           here</a
         >.
@@ -80,17 +81,18 @@ section {
   min-height: 60vh;
   height: fit-content;
   padding: 1rem 0rem;
-  border-radius: 0 0 80% 80% / 30%;
+  border-radius: 0 0 80% 80% / 20%;
 }
 @media screen and (max-width: 480px) {
   section {
-    border-radius: 0 0 80% 80% / 20%;
+    border-radius: 0 0 80% 80% / 15%;
   }
 }
 
 img {
   width: 3.5rem;
   justify-self: baseline;
+  cursor: pointer;
 }
 
 h1 {
@@ -114,10 +116,11 @@ i:hover {
 
 i:focus + p {
   opacity: 1;
+  z-index: 50;
 }
 
 p {
-  z-index: 50;
+  z-index: 0;
   background: white;
   border-radius: 10px;
   position: fixed;

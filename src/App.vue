@@ -56,7 +56,6 @@ export default {
       this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
       this.updateNutrition();
-      console.log(this.diary);
     },
 
     //  method for removing a food entry
@@ -91,10 +90,7 @@ export default {
 
   data() {
     const API_KEY = process.env.VUE_APP_API_KEY;
-    // const totalMacro =
-    //   this.nutrition.general[1].amount +
-    //   this.nutrition.general[2].amount +
-    //   this.nutrition.general[3].amount;
+    
     return {
       nutrition: data,
       diary: [],
@@ -105,19 +101,25 @@ export default {
   computed: {
     totalMacro() {
       return (
+        this.nutrition.other[0].amount +
         this.nutrition.other[1].amount +
-        this.nutrition.general[1].amount +
-        this.nutrition.general[3].amount
+        this.nutrition.other[2].amount
       );
     },
     macro() {
-      return {
-        fat: `${(this.nutrition.general[1].amount / this.totalMacro) * 100}%`,
-        carbs: `${(this.nutrition.other[1].amount / this.totalMacro) * 100}%`,
-        protein: `${
-          (this.nutrition.general[3].amount / this.totalMacro) * 100
-        }%`,
-      };
+      if (this.totalMacro === 0) {
+        return {
+          display: "none",
+        };
+      } else {
+        return {
+          fat: `${Math.round(this.nutrition.other[0].amount / this.totalMacro * 1000) / 10}%`,
+          carbs: `${Math.round(this.nutrition.other[1].amount / this.totalMacro * 1000) / 10}%`,
+          protein: `${
+            Math.round(this.nutrition.other[2].amount / this.totalMacro * 1000) / 10
+          }%`,
+        };
+      }
     },
   },
 };

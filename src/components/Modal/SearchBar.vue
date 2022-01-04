@@ -30,15 +30,9 @@ export default {
           this.$emit("suggest", response);
         });
     },
-    show: function () {
-console.log(this.show)
-    }
+    
   },
-  methods: {
-    resetHandler() {
-      console.log(this.show);
-    },
-  },
+  
 };
 </script>
 

@@ -11,7 +11,7 @@
     @delete-entry="deleteEntry"
     @entry-change="entryChange"
   />
-  <Main :nutrition="nutrition" />
+  <Main :nutrition="nutrition" :macro="macro" />
 </template>
 
 <script>
@@ -56,7 +56,6 @@ export default {
       this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
       this.toggleModal();
       this.updateNutrition();
-      console.log(this.diary);
     },
 
     //  method for removing a food entry
@@ -91,6 +90,7 @@ export default {
 
   data() {
     const API_KEY = process.env.VUE_APP_API_KEY;
+    
     return {
       nutrition: data,
       diary: [],
@@ -98,10 +98,34 @@ export default {
       API_KEY,
     };
   },
+  computed: {
+    totalMacro() {
+      return (
+        this.nutrition.other[0].amount +
+        this.nutrition.other[1].amount +
+        this.nutrition.other[2].amount
+      );
+    },
+    macro() {
+      if (this.totalMacro === 0) {
+        return {
+          display: "none",
+        };
+      } else {
+        return {
+          fat: `${Math.round(this.nutrition.other[0].amount / this.totalMacro * 1000) / 10}%`,
+          carbs: `${Math.round(this.nutrition.other[1].amount / this.totalMacro * 1000) / 10}%`,
+          protein: `${
+            Math.round(this.nutrition.other[2].amount / this.totalMacro * 1000) / 10
+          }%`,
+        };
+      }
+    },
+  },
 };
 </script>
 
-<style >
+<style>
 @import "./assets/css/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans&display=swap");
 

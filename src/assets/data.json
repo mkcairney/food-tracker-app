@@ -7,27 +7,7 @@
       "percentOfDailyNeeds": 0,
       "dailyNeeds": 2000
     },
-    {
-      "name": "Fat",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 30
-    },
-    {
-      "name": "Carbohydrates",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 130
-    },
-    {
-      "name": "Protein",
-      "amount": 0,
-      "unit": "g",
-      "percentOfDailyNeeds": 0,
-      "dailyNeeds": 50
-    },
+    
     {
       "name": "Fiber",
       "amount": 0,
@@ -231,6 +211,27 @@
     
   ],
   "other": [
+    {
+      "name": "Fat",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 30
+    },
+    {
+      "name": "Carbohydrates",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 130
+    },
+    {
+      "name": "Protein",
+      "amount": 0,
+      "unit": "g",
+      "percentOfDailyNeeds": 0,
+      "dailyNeeds": 50
+    },
     {
       "name": "Saturated Fat",
       "amount": 0,

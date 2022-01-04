@@ -113,7 +113,7 @@ div {
   width: 50vw;
   height: fit-content;
   background: rgb(255, 255, 255);
-  z-index: 1;
+  z-index: 51;
   border: solid 2px rgba(0, 0, 0, 0.212);
   border-radius: 10px;
   top: 5%;

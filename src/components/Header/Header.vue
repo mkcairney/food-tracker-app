@@ -78,7 +78,7 @@ section {
   align-items: center;
   background: linear-gradient(rgb(68, 230, 47), rgb(0, 197, 82));
   width: 98.8vw;
-  min-height: 60vh;
+  min-height: 50vh;
   height: fit-content;
   padding: 1rem 0rem;
   border-radius: 0 0 80% 80% / 20%;
@@ -120,7 +120,7 @@ i:focus + p {
 }
 
 p {
-  z-index: 0;
+  z-index: -1;
   background: white;
   border-radius: 10px;
   position: fixed;

@@ -1,5 +1,6 @@
 <template>
   <main>
+    <p>{{this.nutrition.general[0].amount}}kcal</p>
     <div>
       <span :style="{ width: this.macro.protein, background: '#45a319', display: this.macro.display }"></span>
       <span :style="{ width: this.macro.carbs, background: '#145bb8',  display: this.macro.display}"></span>
@@ -10,7 +11,7 @@
       <li><strong> Net Carbs </strong> {{macro.carbs}}</li>
       <li><strong> Fat </strong>{{macro.fat}}</li>
     </ul>
-    <container :nutrition="nutrition.general" name="General" />
+    <!-- <container :nutrition="nutrition.general" name="General" /> -->
     <container :nutrition="nutrition.vitamins" name="Vitamins" />
     <container :nutrition="nutrition.minerals" name="Minerals" />
     <!-- <container  :nutrition="nutrition.other" name="Other"/> -->
@@ -29,10 +30,18 @@ export default {
 <style scoped>
 main {
   background: none;
-  padding-top: 3rem;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+p {
+  align-self: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  border: 3px solid rgba(0, 0, 0, 0.37);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
 }
 div {
   background: rgba(95, 95, 95, 0.301);

@@ -11,7 +11,7 @@
     @delete-entry="deleteEntry"
     @entry-change="entryChange"
   />
-  <Main :nutrition="nutrition" />
+  <Main :nutrition="nutrition" :macro="macro" />
 </template>
 
 <script>
@@ -91,6 +91,10 @@ export default {
 
   data() {
     const API_KEY = process.env.VUE_APP_API_KEY;
+    // const totalMacro =
+    //   this.nutrition.general[1].amount +
+    //   this.nutrition.general[2].amount +
+    //   this.nutrition.general[3].amount;
     return {
       nutrition: data,
       diary: [],
@@ -98,10 +102,28 @@ export default {
       API_KEY,
     };
   },
+  computed: {
+    totalMacro() {
+      return (
+        this.nutrition.other[1].amount +
+        this.nutrition.general[1].amount +
+        this.nutrition.general[3].amount
+      );
+    },
+    macro() {
+      return {
+        fat: `${(this.nutrition.general[1].amount / this.totalMacro) * 100}%`,
+        carbs: `${(this.nutrition.other[1].amount / this.totalMacro) * 100}%`,
+        protein: `${
+          (this.nutrition.general[3].amount / this.totalMacro) * 100
+        }%`,
+      };
+    },
+  },
 };
 </script>
 
-<style >
+<style>
 @import "./assets/css/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans&display=swap");
 

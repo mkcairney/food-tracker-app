@@ -10,7 +10,7 @@
       <h1>NUTRITION TRACKER</h1>
       <i class="fas fa-info-circle" tabindex="0"></i>
       <p>
-        The recommended nutrient levels given here are based on the RDA
+        The recommended nutrient levels given are based on the RDA
         (Recommended Dietary Allowance), Adequate Intake (AI) and Tolerable
         Upper Intake Level (UL) for the average healthy adult (excluding
         pregnant women). Full information can be found

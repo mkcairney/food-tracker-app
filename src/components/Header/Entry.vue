@@ -1,7 +1,7 @@
 <template>
   <li @focus="entryFocus" @blur="entryBlur" tabindex="0" :class="{selected: item.selected}">
     {{ item.name }}
-    <div @click="event.stopPropagation()">
+    <div >
       <input v-model="quantity" type="number" min="0" />
       <select name="measure" v-model="units" id="measure">
         <option :key="unit" :value="unit" v-for="unit in item.possibleUnits">
@@ -42,7 +42,7 @@ export default {
       )
         .json()
         .then((response) => {
-          this.$emit("entry-change", { ...response, myid: this.item.myid });
+          this.$emit("entry-change", { ...response, myid: this.item.myid, selected: true});
         });
     },
 
@@ -54,7 +54,7 @@ export default {
       )
         .json()
         .then((response) => {
-          this.$emit("entry-change", { ...response, myid: this.item.myid });
+          this.$emit("entry-change", { ...response, myid: this.item.myid, selected: true });
         });
     },
   },

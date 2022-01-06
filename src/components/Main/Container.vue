@@ -50,6 +50,11 @@ div {
   gap: 2rem;
   justify-content: center;
 }
+@media screen and (max-width: 480px) {
+  div {
+    gap: 0rem;
+  }
+}
 
 p {
   width: fit-content;

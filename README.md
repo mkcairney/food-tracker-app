@@ -1,24 +1,9 @@
-# food-tracker-app
+# Responsive nutrition checker application.
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+A website application that utilises Vue.js and the spoonacular API to display nutritional information on selected food. 
+Made as a project for a persoanl portfolio.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+![](src/assets/Nutrition.png)
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

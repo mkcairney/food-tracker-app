@@ -7,7 +7,7 @@
         alt="Spoonacular Logo"
         onclick="window.open('https://spoonacular.com/food-api')"
       />
-      <h1>NUTRITION TRACKER</h1>
+      <h1>NUTRITION CHECKER</h1>
       <i class="fas fa-info-circle" tabindex="0"></i>
       <p>
         The recommended nutrient levels given are based on the RDA

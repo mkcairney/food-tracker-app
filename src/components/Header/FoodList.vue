@@ -6,6 +6,8 @@
       :item="item"
       @delete-entry="$emit('delete-entry', item)"
       @entry-change="entryChange"
+      @entry-focus="entryFocus"
+      @entry-blur="entryBlur"
     />
   </ul>
 </template>
@@ -15,12 +17,21 @@ import Entry from "./Entry.vue";
 export default {
   name: "FoodList",
   props: ["diary"],
-  emits: ["delete-entry"],
+  emits: ["delete-entry", "entry-focus", "entry-blur"],
   components: { Entry },
+ 
   methods: {
     entryChange(payload) {
       this.$emit("entry-change", payload);
     },
+     entryFocus(item) {
+      this.$emit("entry-focus", item);
+      this.selected = item.myid
+      console.log(this.selected)
+    },
+    entryBlur(item) {
+      this.$emit("entry-blur", item);
+    }
   },
 };
 </script>
@@ -37,6 +48,7 @@ ul {
   background: rgba(255, 255, 255, 0);
   border-radius: 10px;
 }
+
 
 
 </style>

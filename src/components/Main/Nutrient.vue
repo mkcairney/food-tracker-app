@@ -24,21 +24,23 @@
     <text
       @mouseenter="changeStat()"
       v-if="percent"
-      fill="black"
-      font-size="20"
+      fill="#4a4a4a"
+      font-size="21"
       font-family="Verdana"
       x="50%"
       y="45%"
       dominant-baseline="middle"
       text-anchor="middle"
+      font-weight="bold"
     >
       {{ progress }}%
     </text>
     <text
       @mouseleave="changeStat()"
       v-else
-      fill="black"
-      font-size="20"
+      fill="#4a4a4a"
+      font-weight="bold"
+      font-size="21"
       font-family="Verdana"
       x="50%"
       y="45%"
@@ -49,7 +51,7 @@
     </text>
     <text
       fill="black"
-      font-size="13"
+      font-size="14"
       text-align="center"
       font-family="Verdana"
       x="50%"

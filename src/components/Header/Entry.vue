@@ -1,8 +1,8 @@
 <template>
-  <li>
+  <li @focus="entryFocus" @blur="entryBlur" tabindex="0" :class="{selected: item.selected}">
     {{ item.name }}
-    <div>
-      <input v-model="quantity"  type="number" min="0" />
+    <div @click="event.stopPropagation()">
+      <input v-model="quantity" type="number" min="0" />
       <select name="measure" v-model="units" id="measure">
         <option :key="unit" :value="unit" v-for="unit in item.possibleUnits">
           {{ unit }}
@@ -25,8 +25,16 @@ export default {
       API_KEY: process.env.VUE_APP_API_KEY,
     };
   },
+  methods: {
+    entryFocus() {
+      this.$emit("entry-focus", this.item)
+    },
+    entryBlur() {
+      this.$emit("entry-blur", this.item)
+    },
+  },
   watch: {
-   quantity: async function changeQuantity() {
+    quantity: async function changeQuantity() {
       await (
         await fetch(
           `https://api.spoonacular.com/food/ingredients/${this.item.id}/information?amount=${this.quantity}&unit=${this.units}&apiKey=${this.API_KEY}`
@@ -34,7 +42,7 @@ export default {
       )
         .json()
         .then((response) => {
-          this.$emit("entry-change", {...response, myid: this.item.myid})
+          this.$emit("entry-change", { ...response, myid: this.item.myid });
         });
     },
 
@@ -46,7 +54,7 @@ export default {
       )
         .json()
         .then((response) => {
-          this.$emit("entry-change", {...response, myid: this.item.myid})
+          this.$emit("entry-change", { ...response, myid: this.item.myid });
         });
     },
   },
@@ -61,25 +69,22 @@ li {
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem;
-  opacity: 0%;
   animation: animatein 0.3s forwards;
   border-left: rgba(0, 255, 21, 0) 4px solid;
   border-radius: 4px;
   width: fit-content;
   transition: 0.2s;
+  opacity: 0.5;
+}
+
+.selected {
+  opacity: 1;
 }
 
 li:hover {
   cursor: pointer;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.342);
   transform: translateY(-5%);
-}
-
-@keyframes animatein {
-  100% {
-    opacity: 1;
-    /* transform: translateX(0%); */
-  }
 }
 
 input {

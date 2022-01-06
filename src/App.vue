@@ -10,6 +10,8 @@
     @clear-all="clearAll()"
     @delete-entry="deleteEntry"
     @entry-change="entryChange"
+    @entry-focus="entryFocus"
+    @entry-blur="entryBlur"
   />
   <Main :nutrition="nutrition" :macro="macro" />
 </template>
@@ -41,34 +43,56 @@ export default {
     // method for clearing all food entries at once
     clearAll() {
       this.diary = [];
-      this.updateNutrition();
+      this.updateNutrition(this.diary);
     },
 
-    // method for updating a food entry measurement, where payload has been bubbled up from a nested compenent using emits
+    // method for updating a food entry measurement, where payload has been bubbled up from a nested compenent using emits.
     entryChange(payload) {
       this.diary[this.diary.findIndex((entry) => entry.myid == payload.myid)] =
         payload;
-      this.updateNutrition();
+      this.updateNutrition(this.diary);
     },
 
     // method for setting a food entry and adding a unqiue id in order to edit or delete successfully
     addToDiary(res) {
-      this.diary.push({ ...res, myid: Math.round(Math.random() * 10000) });
+      this.diary.push({
+        ...res,
+        myid: Math.round(Math.random() * 10000),
+        selected: true,
+      });
       this.toggleModal();
-      this.updateNutrition();
+      this.updateNutrition(this.diary);
     },
 
     //  method for removing a food entry
     deleteEntry(item) {
       this.diary = this.diary.filter((entry) => entry.myid !== item.myid);
-      this.updateNutrition();
+      this.updateNutrition(this.diary);
     },
 
-    // method for calculating the nutirents in all the food entries combined
-    updateNutrition() {
-      let respNutr = this.diary
-        .map((entry) => entry.nutrition.nutrients)
-        .flat();
+    // method for selecting a single entry from the diary on focus,
+    // removing the rest of the diary from the nutrition state.
+    entryFocus(item) {
+      this.temp = [];
+      this.temp.push(item);
+      this.diary.forEach((a) => {
+        if (a.myid !== item.myid) {
+          a.selected = false;
+        }
+      });
+      this.updateNutrition(this.temp);
+    },
+
+    // reseting the entries not selected to default so entire diary is included in the nutrition state.
+    entryBlur() {
+      this.temp = [];
+      this.diary.forEach((a) => (a.selected = true));
+      this.updateNutrition(this.diary);
+    },
+
+    // method for calculating the total nutrients from all diary entries
+    updateNutrition(list) {
+      let respNutr = list.map((entry) => entry.nutrition.nutrients).flat();
       this.nutrition.general
         .concat(this.nutrition.vitamins)
         .concat(this.nutrition.minerals)
@@ -90,10 +114,11 @@ export default {
 
   data() {
     const API_KEY = process.env.VUE_APP_API_KEY;
-    
+
     return {
       nutrition: data,
       diary: [],
+      temp: [],
       modal: false,
       API_KEY,
     };
@@ -113,10 +138,20 @@ export default {
         };
       } else {
         return {
-          fat: `${Math.round(this.nutrition.other[0].amount / this.totalMacro * 1000) / 10}%`,
-          carbs: `${Math.round(this.nutrition.other[1].amount / this.totalMacro * 1000) / 10}%`,
+          fat: `${
+            Math.round(
+              (this.nutrition.other[0].amount / this.totalMacro) * 1000
+            ) / 10
+          }%`,
+          carbs: `${
+            Math.round(
+              (this.nutrition.other[1].amount / this.totalMacro) * 1000
+            ) / 10
+          }%`,
           protein: `${
-            Math.round(this.nutrition.other[2].amount / this.totalMacro * 1000) / 10
+            Math.round(
+              (this.nutrition.other[2].amount / this.totalMacro) * 1000
+            ) / 10
           }%`,
         };
       }

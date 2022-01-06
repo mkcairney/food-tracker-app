@@ -38,6 +38,8 @@
       :diary="diary"
       @delete-entry="deleteEntry"
       @entry-change="entryChange"
+      @entry-focus="entryFocus"
+      @entry-blur="entryBlur"
     />
   </section>
 </template>
@@ -49,7 +51,7 @@ import MyButton from "./Button.vue";
 export default {
   components: { FoodList, MyButton },
   props: ["diary"],
-  emits: ["search-modal", "delete-entry", "clear-all"],
+  emits: ["search-modal", "delete-entry", "clear-all", "entry-focus","entry-blur"],
   name: "Header",
   data() {
     return {
@@ -64,6 +66,12 @@ export default {
     deleteEntry(item) {
       this.$emit("delete-entry", item);
     },
+    entryFocus(item) {
+      this.$emit("entry-focus", item);
+    },
+    entryBlur(item) {
+      this.$emit("entry-blur", item);
+    }
   },
 };
 </script>

@@ -6,7 +6,7 @@ Made as a project for a persoanl portfolio.
 
 ![](src/assets/Nutrition.png)
 
-<a href="https://peaceful-jennings-48cc85.netlify.app/">Demo</a>
+<a href="https://peaceful-jennings-48cc85.netlify.app/" target="_blank">Demo</a>
 
 
 ## Features
